@@ -57,7 +57,7 @@ const personResolvers = {
       return people[id]
     },
     people() {
-      return Object.keys(people).map(id => people[id])
+      return Object.values(people)
     },
   },
   Mutation: {
