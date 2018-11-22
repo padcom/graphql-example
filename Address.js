@@ -1,4 +1,9 @@
 class Address {
+  /**
+   * @param {String|Number} personId 
+   * @param {String} city 
+   * @param {String} street 
+   */
   constructor(personId, city, street) {
     this.personId = personId
     this.city = city

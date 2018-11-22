@@ -2,6 +2,11 @@ const uuid = require('uuid')
 const { Address } = require('./Address')
 
 class Person {
+  /**
+   * @param {String|Number} id 
+   * @param {String} name 
+   * @param {Number} age 
+   */
   constructor(id, name, age) {
     this.id = id
     this.name = name
@@ -32,7 +37,7 @@ const resolver = (people, addresses) => ({
 
       return people[id]
     },
-    addPersonAddress(_, { personId, city, street } = {}) {
+    addAddressToPerson(_, { personId, city, street } = {}) {
       const person = people[personId]
       if (!person) throw new Error(`Person with ID=${personId} not found`)
       const address = new Address(personId, city, street)
@@ -43,6 +48,8 @@ const resolver = (people, addresses) => ({
 
   Person: {
     addresses(person) {
+      // returning a Promise makes the response wait until the
+      // Promise is properly resolved
       return new Promise(resolve => {
         setTimeout(() => {
           resolve(addresses.filter(address => address.personId == person.id))

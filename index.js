@@ -27,5 +27,5 @@ const resolvers = [
   addressResolvers(people)
 ]
 
-const server = new GraphQLServer({ typeDefs: './schema.graphql', resolvers })
-server.start(() => console.log('Server listening on port 4000'))
+const server = new GraphQLServer({ typeDefs: './schema.graphql', resolvers})
+server.start({ playground: '/graphql' }, () => console.log('Server listening on port 4000'))
