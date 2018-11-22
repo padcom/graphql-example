@@ -41,7 +41,11 @@ const root = {
     return 'Hello, world!'
   },
   rollDice({ num, sides = 6 }) {
-    return [ Math.round(Math.random() * sides) ]
+    const result = []
+    for (let i = 0; i < num; i++) {
+      result.push(Math.round(Math.random() * sides))
+    }
+    return result
   },
   person({ id }) {
     return people[id]
