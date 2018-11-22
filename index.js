@@ -19,8 +19,14 @@ const schema = buildSchema(`
     people: [Person!]
   }
 
+  input PersonInput {
+    name: String
+    age: Int
+  }
+
   type Mutation {
     createPerson(name: String!, age: Int!): Person!
+    updatePerson(id: Int!, input: PersonInput!): Person!
   }
 `)
 
@@ -58,6 +64,12 @@ const root = {
     people[person.id] = person
 
     return person
+  },
+  updatePerson({ id, input }) {
+    if (!people[id]) throw new Error(`No person with id ${id}`)
+    if (input.name) people[id].name = input.name
+    if (input.age) people[id].age = input.age
+    return people[id]
   }
 }
 
