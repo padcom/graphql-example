@@ -17,6 +17,8 @@ class Person {
 
 const people = {
   1: new Person(1, 'John Doe', 43),
+  2: new Person(2, 'Jane Smith', 25),
+  3: new Person(3, 'Clif Richards', 55),
 }
 
 class Address {
@@ -56,8 +58,8 @@ const personResolvers = {
     person(_, { id }) {
       return people[id]
     },
-    people() {
-      return Object.values(people)
+    people(_, { skip = 0, max }) {
+      return Object.values(people).slice(skip, max ? skip + max : max)
     },
   },
   Mutation: {

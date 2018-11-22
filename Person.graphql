@@ -8,7 +8,7 @@ type Person {
 }
 
 type Query {
-  people: [Person!]
+  people(skip: Int, max: Int): [Person!]
   person(id: Int!): Person
 }
 
