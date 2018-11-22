@@ -1,10 +1,9 @@
 #!/usr/bin/env node
 
 // Example query using cURL
-// curl -X POST --data '{ "query": "{ people { id, name, age } }" }' --header "Content-Type: application/json" localhost:3000/graphql
+// curl -X POST --data '{ "query": "{ people { id, name, age } }" }' --header "Content-Type: application/json" localhost:4000
 
 const { GraphQLServer } = require('graphql-yoga')
-const { importSchema } = require('graphql-import')
 
 const { resolver: helloResolvers } = require('./Hello')
 const { resolver: diceResolvers } = require('./Dice')
@@ -28,8 +27,5 @@ const resolvers = [
   addressResolvers(people)
 ]
 
-const typeDefs = importSchema('./schema.graphql')
-console.log(typeDefs)
-
-const server = new GraphQLServer({ typeDefs, resolvers })
+const server = new GraphQLServer({ typeDefs: './schema.graphql', resolvers })
 server.start(() => console.log('Server listening on port 4000'))
