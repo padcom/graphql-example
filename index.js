@@ -21,7 +21,12 @@ const addresses = [
   new Address(1, 'New York', '1st street')
 ]
 
-const resolvers = [ helloResolvers, diceResolvers, personResolvers(people, addresses), addressResolvers(people) ]
+const resolvers = [
+  helloResolvers,
+  diceResolvers,
+  personResolvers(people, addresses),
+  addressResolvers(people)
+]
 
 const typeDefs = importSchema('./schema.graphql')
 console.log(typeDefs)
