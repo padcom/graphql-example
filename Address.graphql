@@ -1,0 +1,7 @@
+# import Person from "Person.graphql"
+
+type Address {
+  city: String!
+  street: String!
+  person: Person!
+}
