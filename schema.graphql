@@ -1,6 +1,3 @@
-# import Query.*, Mutations.*, * from "Person.graphql"
 # import Query.* from "Hello.graphql"
-
-type Query {
-  rollDice(num: Int!, sides: Int): [Int]
-}
+# import Query.* from "Dice.graphql"
+# import Query.*, Mutations.*, * from "Person.graphql"
