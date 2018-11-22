@@ -87,7 +87,11 @@ const personResolvers = {
 
   Person: {
     addresses(person) {
-      return addresses.filter(address => address.personId == person.id)
+      return new Promise(resolve => {
+        setTimeout(() => {
+          resolve(addresses.filter(address => address.personId == person.id))
+        }, 100)
+      })
     },
   },
 }
