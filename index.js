@@ -1,5 +1,8 @@
 #!/usr/bin/env node
 
+// Example query using cURL
+// curl -X POST --data '{ "query": "{ people { id, name, age } }" }' --header "Content-Type: application/json" localhost:3000/graphql
+
 const { buildSchema } = require('graphql')
 const express = require('express')
 const graphqlHTTP = require('express-graphql')
